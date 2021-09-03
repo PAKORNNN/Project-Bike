@@ -1,30 +1,31 @@
-const {Comment} = require('../models')
+const { Comment } = require('../models')
 
 module.exports = {
-    //get all comment
-    async index (req, res) {
+    // get all comment
+    async index(req, res) {
         try {
             const comments = await Comment.findAll()
             res.send(comments)
-        }catch(err){
+        } catch (err) {
             res.status(500).send({
                 error: 'The comments information was incorrect'
             })
         }
     },
-    //create comment
-    async create (req, res) {
-        //res.send(JSON.stringifiy(req,body))
-        try{
-            const comment = await Comment.create(req,body)
+
+    // create comment
+    async create(req, res) {
+        try {
+            const comment = await Comment.create(req.body)
             res.send(comment.toJSON())
-        }catch(err){
+        } catch (err) {
             res.status(500).send({
-                error: 'Create commit incorrect'
+                error: 'Create comment incorrect'
             })
         }
     },
-    //edit comment, suspend, active
+
+    // edit comment, suspend, active
     async put(req, res) {
         try {
             await Comment.update(req.body, {
@@ -33,42 +34,46 @@ module.exports = {
                 }
             })
             res.send(req.body)
-        }catch(err) {
-            req.status(500).send({
+        } catch (err) {
+            res.status(500).send({
                 error: 'Update comment incorrect'
             })
         }
     },
-    //detele comment
-    async remove (req, res) {
-        try{
+
+    // delete comment
+    async remove(req, res) {
+        try {
             const comment = await Comment.findOne({
                 where: {
                     id: req.params.commentId
                 }
             })
-            if(!comment){
+
+            if (!comment) {
                 return res.status(403).send({
-                    error: 'The comment information was inrrect'
+                    error: 'The comment information was incorrect'
                 })
             }
+
             await comment.destroy()
             res.send(comment)
-        }catch(err) {
-            req.status(500).send({
-                error: 'The comment information was incorrrect'
+        } catch (err) {
+            res.status(500).send({
+                error: 'The comment information was incorrect'
             })
         }
     },
-    //get comment by id
-    async show (req, res){
+
+    // get comment by id
+    async show (req, res) {
         try {
-            const comment = await Comment.findByPK(req.params.commentId)
+            const comment = await Comment.findByPk(req.params.commentId)
             res.send(comment)
-        }catch(err){
-            req.status(500).send({
-                error: 'The comment informaton was incorrect'
+        } catch (err) {
+            res.status(500).send({
+                error: 'The comment information was incorrect'
             })
         }
-    }
+    },
 }

@@ -19,9 +19,9 @@ module.exports = (app) => {
   app.get('/blog/:blogId',BlogController.show)
   app.get('/blogs',BlogController.index)
   //comment
-  app.post('./comment',CommentController.create)
-  app.put('./comment/:commentId',CommentController.put)
-  app.delete('./comment/:commentId',CommentController.remove)
-  app.get('./comment/:commentId',CommentController.show)
-  app.get('./comments',CommentController.index)
+  app.post('/comment', CommentController.create)
+  app.put('/comment/:commentId',CommentController.put)
+  app.delete('/comment/:commentId',CommentController.remove)
+  app.get('/comment/:commentId',CommentController.show)
+  app.get('/comments',CommentController.index)
 }
