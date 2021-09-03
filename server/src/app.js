@@ -9,6 +9,8 @@ const app = express()
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(cors())
+
+require('./userPassport')//บท9 ลิ้งกับไฟล์ userPassport
 require('./routes')(app)
 
 app.get('/status', function (req, res ){
