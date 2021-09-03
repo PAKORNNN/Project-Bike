@@ -23,6 +23,7 @@ export default {
         title: "",
         thumbnail: "null",
         pictues: "null", //ระวังตรงนี้คำผิด
+        content: "",
         category: "",
         status: "",
       },
