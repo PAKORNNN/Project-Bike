@@ -18,7 +18,7 @@
 
         <hr>
     </div>
-    <p><button v-on:click="logout">logout</button></p>
+   <!--  <p><button v-on:click="logout">logout</button></p> -->
 </div>
 </template>
 <script>

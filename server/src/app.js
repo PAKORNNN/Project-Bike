@@ -1,26 +1,17 @@
 let express = require('express')
+let cors = require('cors')
 
 const {sequelize} = require('./models')
-let cors = require('cors')
 const config = require('./config/config')
-
 const app = express()
 
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(cors())
+app.use('/assets',express.static('public'))
 
 require('./userPassport')//บท9 ลิ้งกับไฟล์ userPassport
 require('./routes')(app)
-
-app.get('/status', function (req, res ){
-  res.send('Hello nodejs server')
-})
-
-app.get('/hello/:person', function (req,res) {
-  console.log('hello - ' + req.params.person)
-  res.send('sey hello with ' + req.params.person)
-})
 
 let port = process.env.PORT || config.port
 

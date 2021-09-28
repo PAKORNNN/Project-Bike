@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+
     <back-header/>
     <!-- <img src="./assets/logo.png"> -->
     <router-view/>
@@ -22,5 +23,15 @@ export default {
   margin-top: 60px auto auto auto;
   line-height: 40px;
   font-size:18px;
+}
+/*Fade*/
+.fade-enter, .fade-leave-to{
+  opacity: 0;
+}
+.fade-emter-active, .fade-leave-active{
+  transition: opacity 0.5s;
+}
+.fade-enter-to{
+  opacity: 1;
 }
 </style>

@@ -17,8 +17,7 @@
         <button v-on:click="deleteBlog(blog)">Delete Blog</button>
       </p>
     </div>
-    <p><button v-on:click="logout">Logout</button></p>
-  </div>
+<!--     <p><button v-on:click="logout">Logout</button></p> -->  </div>
 </template>
 <script>
 import BlogService from "@/services/BlogService";
