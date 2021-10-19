@@ -1,10 +1,11 @@
 <template>
   <div>
-    <h1>Create Blog</h1>
+    <h1>Create Bike</h1>
     <form v-on:submit.prevent="createBlog">
       <!-- <p><strong>Title:</strong> <input type="text" v-model="blog.title" /></p> -->
+      
+      <p>Title : <input class="form-control" type="text" v-model="blog.title" required/></p>
 
-      <p>title : <input type="text" v-model="blog.title" /></p>
       <transition name="fade">
         <div class="thumbnail-pic" v-if="blog.thumbnail != 'null'">
           <img :src="BASE_URL + blog.thumbnail" alt="thumbnail" />
@@ -24,6 +25,7 @@
             "
             accept="image/*"
             class="input-file"
+            required
           />
           <!-- <p v-if="isInitial || isSuccess"/> -->
           <p v-if="isInitial">
@@ -54,7 +56,7 @@
       </form>
       <!-- จบอัพรูป -->
 
-      <p><strong>Content:</strong></p>
+      <p>Content:</p>
       <p>
         <vue-ckeditor
           v-model.lazy="blog.content"
@@ -65,12 +67,19 @@
       </p>
 
       <p>
-        <strong>Category:</strong> <input type="text" v-model="blog.category" />
+        Author Name: <input class="form-control" type="text" v-model="blog.category" required/>
       </p>
       <p>
-        <strong>Status:</strong> <input type="text" v-model="blog.status" />
+        <button class="btn btn-primary" type="submit">
+          <i class="fa fa-plus-square-o" aria-hidden="true"></i> 
+          Create
+        </button>
+        <button class="btn btn-light" v-on:click="navigateTo('/blogs')">
+          <i class="fa fa-backward" aria-hidden="true"></i>
+          Back
+        </button>
       </p>
-      <p><button type="submit">Create Blog</button></p>
+      
     </form>
   </div>
 </template>
@@ -126,114 +135,7 @@ export default {
     },
     created() {
       this.config.toolbar = [
-        {
-          name: "document",
-          items: [
-            "Source",
-            "-",
-            "Save",
-            "NewPage",
-            "Preview",
-            "Print",
-            "-",
-            "Templates",
-          ],
-        },
-        {
-          name: "clipboard",
-          items: ["Cut", "Copy", "Paste", "PasteText", "-", "Undo", "Redo"],
-        },
-        {
-          name: "editing",
-          items: ["Find", "Replace", "-", "SelectAll", "-", "Scayt"],
-        },
-        {
-          name: "forms",
-          items: [
-            "Form",
-            "Checkbox",
-            "Radio",
-            "TextField",
-            "Textarea",
-            "Select",
-            "Button",
-            "ImageButton",
-            "HiddentField",
-          ],
-        },
-        "/",
-        {
-          name: "basicstyles",
-          items: [
-            "Bold",
-            "Italic",
-            "Underline",
-            "Strike",
-            "Subscript",
-            "SuperScript",
-            "-",
-            "CopyFormatting",
-            "RemoveFormat",
-          ],
-        },
-        {
-          name: "basicstyles",
-          items: [
-            "Bold",
-            "Italic",
-            "Strike",
-            "SubScript",
-            "Superscript",
-            "-",
-            "CopyFormatting",
-            "RemoveFormat",
-          ],
-        },
-        {
-          name: "paragraph",
-          items: [
-            "NumberedList",
-            "BulletedList",
-            "-",
-            "Outdent",
-            "Indent",
-            "-",
-            "Blockquote",
-            "CreateDiv",
-            "-",
-            "JustifyLeft",
-            "JustifyCenter",
-            "JustifyRight",
-            "JustifyBlock",
-            "-",
-            "BidiLtr",
-            "BidiRtl",
-            "Language",
-          ],
-        },
-        { name: "Links", items: ["Link", "Unlink", "Anchor"] },
-        {
-          name: "insert",
-          items: [
-            "Image",
-            "Flash",
-            "Table",
-            "HorizontalRule",
-            "Smiley",
-            "Specialchar",
-            "PageBreak",
-            "Iframe",
-            "InsertPre",
-          ],
-        },
-        "/",
-        {
-          name: "styles",
-          items: ["Styles", "Format", "Font", "Font", "FontSize"],
-        },
-        { name: "colors", items: ["TextColor", "BGColor"] },
-        { name: "tools", items: ["Maximize", "ShowBlocks"] },
-        { name: "about", items: ["About"] },
+        {},
       ];
     },
     navigateTo(route) {

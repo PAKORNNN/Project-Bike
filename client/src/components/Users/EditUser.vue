@@ -1,20 +1,24 @@
 <template>
   <div>
-    <h1> Edit User</h1>
+    <h1 class="text"> Edit User </h1>
       <form v-on:submit = "editUser">
-        <div>name : <input type="text" v-model = "user.name"></div>
-        <div>lastname : <input type="text" v-model = "user.lastname"></div>
-        <div>email : <input type="text" v-model = "user.email"></div>
-        <div>password : <input type="text" v-model = "user.password"></div>
-        <div><button type="submit">Edit User</button></div>
+        <span>Name : <input type="text" v-model = "user.name" class="form-control" required></span>
+        <span>Lastname : <input type="text" v-model = "user.lastname" class="form-control" required></span>
+        <span>Email : <input type="email" v-model = "user.email" class="form-control" required></span>
+        <span>Password : <input type="password" v-model = "user.password" class="form-control" required></span>
+        <br>
+        <p>
+          <button type="submit" class="btn btn-success"> <i class="fa fa-floppy-o" aria-hidden="true"></i> Save</button>
+          <button v-on:click="navigateTo('/users')" class="btn btn-light"> <i class="fa fa-backward" aria-hidden="true"></i> Back</button>
+        </p>
       </form>
-    <hr>
-      <div>
-        <div>name : {{user.name}}</div>
-        <div>lastname : {{user.lastname}}</div>
-        <div>email : {{user.email}}</div>
-        <div>password : {{user.password}}</div>
-      </div>
+    <!--<hr>
+       <div>
+        <span>Name : {{user.name}}</span><br>
+        <span>Lastname : {{user.lastname}}</span><br>
+        <span>Email : {{user.email}}</span><br>
+        <span>Password : {{user.password}}</span>
+      </div> -->
   </div>
 </template>
 <script>
@@ -33,6 +37,9 @@ export default {
     }
   },
   methods: {
+    navigateTo(route) {
+      this.$router.push(route);
+    },
     async editUser (){
       try{
         await UserService.put(this.user)

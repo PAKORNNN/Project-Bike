@@ -1,12 +1,16 @@
 <template>
   <div>
-    <h1>Show User</h1>
-    <div>id : {{ user.id }}</div>
-    <div>ชื่อนามสกุล : {{ user.name }} - {{ user.lastname }}</div>
-    <div>email : {{ user.email }}</div>
-    <div>password : {{ user.password }}</div>
-    <p><button v-on:click="navigateTo('/users')">Back</button></p>
+    <h1 class="text">Show User </h1><br>
+    <div class="bg">
+      <!-- <div class="text">ID :</div> <span>{{ user.id }}</span><br> -->
+    <div class="text">Name - Surname</div> <span>{{ user.name }} - {{ user.lastname }}</span><br>
+    <div class="text">Email : </div><span>{{ user.email }}</span><br>
+    <div class="text">Password : </div><span>{{ user.password }}</span><hr>
+    <button v-on:click="navigateTo('/user/edit/' + user.id)" class="btn btn-success"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button>
+    <button v-on:click="navigateTo('/users')" class="btn btn-light"> <i class="fa fa-backward" aria-hidden="true"></i> Back</button>
+</div>
   </div>
+  
 </template>
 <script>
 import UserService from "@/services/UserService";

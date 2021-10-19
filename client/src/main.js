@@ -8,6 +8,25 @@ import store from './store'//บท9
 import VueResource from 'vue-resource'
 import BackHeader from '@/components/Header.vue' //ลิ้งไฟล์ Header ให้ไปแสดงทุกหน้าได้จากที่นี่
 Vue.component('back-header', BackHeader)
+//bootstrap
+import { BootstrapVue, BootstrapVueIcons } from 'bootstrap-vue'
+
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+
+Vue.use(BootstrapVue)
+Vue.use(BootstrapVueIcons)
+//icon
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+library.add(fas);
+Vue.component('font-awesome-icon', FontAwesomeIcon)
+
+//MD Bootstrap
+import 'bootstrap-css-only/css/bootstrap.min.css'
+import 'mdbvue/lib/css/mdb.min.css'
 
 Vue.config.productionTip = false
 

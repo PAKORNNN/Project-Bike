@@ -10,6 +10,8 @@ import Login from '@/components/Login' //Authen
 
 //commets
 import CommentIndex from '@/components/Comments/Index'
+import CommentCreate from '@/components/Comments/CreateComment'
+
 //Blog
 import BlogIndex from '@/components/Blogs/Index'
 import BlogCreate from '@/components/Blogs/CreateBlog'
@@ -76,6 +78,12 @@ export default new Router({
       name: 'comments',
       component: CommentIndex
     },
+    {
+      path: '/comments/create',
+      name: 'comment-create',
+      component: CommentCreate
+    },
+    //upload
     {
       path: '/upload',
       name: 'Upload',
