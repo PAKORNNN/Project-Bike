@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Create Bike</h1>
+    <h1 class="text">Create Bike</h1>
     <form v-on:submit.prevent="createBlog">
       <!-- <p><strong>Title:</strong> <input type="text" v-model="blog.title" /></p> -->
       
